@@ -2,7 +2,6 @@
   <div class="bg" @swipe="">
     <scroll id="scroll" scroll-x="true">
       <div class="fields">
-        <image class="trims" src="/common/garden/trims.png" />
         <div for="{{ dFields }}" class="field {{ $item.field }}" @click="onFieldPressed($item)">
           <image src="/common/garden/fence.png" class="fence" />
           <div class="state state-buy" if="{{ !$item.buy }}"></div>
