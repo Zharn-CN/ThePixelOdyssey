@@ -61,7 +61,7 @@ export default {
       {
         name: "丝瓜",
         key: "siGua",
-        sell: 43,
+        sell: 430,
         buy: 250,
         maxState: 3,
         period: 120000
