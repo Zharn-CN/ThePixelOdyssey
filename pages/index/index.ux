@@ -37,7 +37,7 @@ export default {
   top: 0px;
   background-color: #000;
 }
-
+/* 动画修改完毕 */
 /* 横向图片 */
 .h-slide {
   position: absolute;
