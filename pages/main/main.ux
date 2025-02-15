@@ -1,0 +1,154 @@
+<template>
+  <div class="bg" @swipe="swipe()">
+    <div class="money">
+      <text>{{ dMoney }}</text>
+    </div>
+    <div class="health"><text>100</text></div>
+    <div class="jump-btn" @click="onButtonPress(0)"></div>
+    <div class="jump-btn jump-btn-warehouse" @click="onButtonPress(1)"></div>
+    <div class="money-btn" @click="onMoneyButtonPress()"></div>
+    <div class="setting-btn" @click="onButtonPress(2)"></div>
+    <image class="player" src="/common/main/players/default.png" />
+  </div>
+</template>
+
+<script>
+import vibrator from "@system.vibrator"
+export default {
+  private: {
+    dMoney: -1
+  },
+  async swipe(eve) {
+    if (eve.direction == "right") {
+      await this.$app.$def.saveData()
+      this.$app.exit()
+    }
+  },
+
+  onInit() {
+    this.dMoney = this.$app.$def.money
+  },
+
+  onButtonPress(index) {
+    if (index == 0) {
+      this.$app.$def.jumpPage("garden")
+    } else if (index == 1) {
+      this.$app.$def.jumpPage("warehouse")
+    } else if (index == 2) {
+      this.$app.$def.jumpPage("setting")
+    }
+  },
+
+  onMoneyButtonPress() {
+    this.$app.$def.money++
+    this.dMoney = this.$app.$def.money
+    vibrator.vibrate({
+      mode: "short"
+    })
+  }
+}
+</script>
+
+<style>
+@import "../base.css";
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  width: 192px;
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.loading-text2 {
+  font-size: 20px;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.bg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a5694d;
+  background-image: url(/common/main/background.png);
+}
+
+.jump-btn {
+  position: absolute;
+  top: 128px;
+  left: 79px;
+  width: 50px;
+  height: 68px;
+  background-image: url(/common/main/go_garden.png);
+  background-repeat: no-repeat;
+}
+
+.jump-btn-warehouse {
+  left: 138px;
+  background-image: url(/common/main/go_warehouse.png);
+}
+
+.money-btn {
+  position: absolute;
+  bottom: 124px;
+  left: 25px;
+  width: 140px;
+  height: 60px;
+  background-image: url(/common/main/add_money.png);
+}
+
+.setting-btn {
+  position: absolute;
+  top: 412px;
+  left: 46px;
+  width: 102px;
+  height: 72px;
+  background-image: url(/common/main/setting.png);
+}
+
+.player {
+  height: auto;
+  width: auto;
+}
+
+.money {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  height: 35px;
+  width: 100px;
+  padding-left: 26px;
+  padding-right: 2px;
+}
+
+.health {
+  position: absolute;
+  top: 26px;
+  left: 97px;
+  height: 35px;
+  width: 65px;
+  padding-left: 29px;
+  padding-right: 2px;
+}
+
+text {
+  text-align: left;
+  line-height: 35px;
+  color: white;
+  font-size: 16px;
+}
+</style>

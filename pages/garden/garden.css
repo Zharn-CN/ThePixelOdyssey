@@ -1,0 +1,393 @@
+.bg {
+  font-weight: bold;
+  background-color: skyblue;
+}
+
+.menu-field {
+  position: absolute;
+  left: 42px;
+  top: 107px;
+  width: 45px;
+  height: 45px;
+  background-image: url(/common/garden/soil.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.trims {
+  position: absolute;
+  pointer-events: none;
+  width: 768px;
+  height: 473px;
+  left: 0;
+  top: 0;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  width: 192px;
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.loading-text2 {
+  font-size: 20px;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+#scroll {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 192px;
+  height: 490px;
+}
+
+.fields {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding-top: 64px;
+
+  width: 768px;
+  height: 490px;
+
+  background-image: url(/common/garden/background.png);
+  background-repeat: no-repeat;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-right: 34px;
+  margin-left: 28px;
+  margin-top: 48px;
+  width: 128px;
+  height: 128px;
+  background-image: url(/common/garden/soil.png);
+  background-repeat: no-repeat;
+  overflow: visible;
+}
+
+.plant-szz {
+  position: absolute;
+  top: -13px;
+  left: 48px;
+  height: 27px;
+  width: 32px;
+  background-image: url(/common/garden/tips-szz.png);
+  background-repeat: no-repeat;
+}
+
+.plant-ok {
+  position: absolute;
+  top: -13px;
+  left: 48px;
+  height: 27px;
+  width: 32px;
+  background-image: url(/common/garden/tips-cs.png);
+  background-repeat: no-repeat;
+}
+
+.field-water {
+  background-image: url(/common/garden/soil-s.png);
+}
+
+.field-arable {
+  background-image: url(/common/garden/soil-g.png);
+}
+
+.field-water-arable {
+  background-image: url(/common/garden/soil-gs.png);
+}
+
+.fence {
+  position: absolute;
+  top: 0;
+  left: 7px;
+  width: 114px;
+  height: 119px;
+}
+
+.plant {
+  position: absolute;
+  object-fit: none;
+  width: 48px;
+  height: 48px;
+  left: 40px;
+  top: 40px;
+}
+
+.state {
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.state-buy {
+  width: 38px;
+  height: 37px;
+  background-image: url(/common/garden/state-m.png);
+}
+
+.state-water {
+  width: 32px;
+  height: 32px;
+  background-image: url(/common/garden/state-s.png);
+}
+
+.state-arable {
+  width: 26px;
+  height: 32px;
+  background-image: url(/common/garden/state-g.png);
+}
+
+.exit-btn {
+  position: absolute;
+  top: 233px;
+  left: 4px;
+  width: 50px;
+  height: 50px;
+  background-image: url(/common/garden/exit.png);
+  background-repeat: no-repeat;
+}
+
+.menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 192px;
+  height: 480px;
+  background-image: url(/common/menu/background_garden.png);
+  background-repeat: no-repeat;
+  background-position: 23px 41px;
+}
+
+.menu-fence {
+  position: absolute;
+  top: 99px;
+  left: 39px;
+  width: 51px;
+  height: 54px;
+}
+
+.menu-plant {
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  width: 42px;
+  height: 42px;
+}
+
+.menu-close-btn {
+  position: absolute;
+  left: 70px;
+  top: 440px;
+  width: 40px;
+  height: 40px;
+}
+
+.menu-state-text {
+  position: absolute;
+  top: 116px;
+  right: 35px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-align: right;
+}
+
+.menu-btns {
+  position: absolute;
+  left: 0;
+  bottom: 63px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 42px;
+  padding-right: 45px;
+  width: 192px;
+  height: auto;
+}
+
+.menu-state-btn {
+  margin-top: 8px;
+  width: 105px;
+  height: 45px;
+}
+
+.menu-gui {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 23px;
+  top: 41px;
+  width: 145px;
+  height: 480px;
+}
+
+.menu-buy-text {
+  width: 145px;
+  margin-top: 130px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu-buy-text2 {
+  width: 145px;
+  margin-top: 32px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu-seed {
+  position: absolute;
+  left: 39px;
+  top: 156px;
+  width: 145px;
+  height: 210px;
+}
+
+.menu-seed-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 114px;
+  height: 53px;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+.menu-seed-item-sel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: #c0774b;
+}
+
+.menu-seed-item-img {
+  height: 32px;
+  width: auto;
+}
+
+.menu-seed-item-text {
+  font-size: 17px;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-seed-item-text2 {
+  flex: 1;
+  font-size: 17px;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  overflow: visible;
+}
+
+.menu-rice {
+  padding-top: 173px;
+}
+
+.menu-rice-things {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 120px;
+  height: 53px;
+}
+
+.menu-rice-text {
+  position: absolute;
+  width: 145px;
+  margin-top: 130px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu-rice-img {
+  margin-left: -1px;
+  height: 32px;
+  width: auto;
+}
+
+.menu-rice-text1 {
+  font-size: 22px;
+  margin-left: 7px;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-rice-text2 {
+  flex: 1;
+  font-size: 22px;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-szz-text {
+  width: 145px;
+  margin-top: 130px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu-szz-text2 {
+  width: 145px;
+  margin-top: 16px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.test-btn {
+  position: absolute;
+  left: 60px;
+  top: 35px;
+  height: 20px;
+  width: 50px;
+  background-color: wheat;
+}
+
+.test-btn-text {
+  color: #ff0000;
+  text-align: center;
+  width: 50px;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}

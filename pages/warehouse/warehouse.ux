@@ -1,0 +1,334 @@
+<template>
+  <div class="bg" @swipe="">
+    <div class="menu-list">
+      <scroll class="menu-list-scroll" scroll-y="true">
+        <div class="menu-list-item" for="{{ dPlants }}" @click="sel($item)">
+          <div class="menu-list-item-sel" if="{{$item.name == menuItem.name}}"></div>
+          <image class="menu-list-item-img" src="/common/plants/{{$item.key}}/{{$item.maxState}}.png" />
+          <text class="menu-list-item-text1">{{ $item.name }}</text>
+          <text class="menu-list-item-text2">{{ $item.count }}</text>
+        </div>
+      </scroll>
+
+      <image src="/common/menu/cs.png" class="menu-list-sell" @click="sell()" />
+
+      <image class="menu-close" src="/common/menu/exit.png" @click="exit()" />
+    </div>
+
+    <div class="menu-sell" if="{{ sellMenu }}">
+      <div class="menu-title">
+        <image class="menu-sell-img" src="/common/plants/{{menuItem.key}}/{{menuItem.maxState}}.png" />
+        <text class="menu-sell-text1">{{ menuItem.name }}</text>
+        <text class="menu-sell-text2">{{ menuItem.count }}</text>
+      </div>
+      <image src="/common/menu/add.png" class="menu-add-btn" @click="add()" />
+      <text class="menu-count-text">{{ itemCount }}</text>
+      <image src="/common/menu/sub.png" class="menu-sub-btn" @click="sub()" />
+
+      <image src="/common/menu/all.png" class="menu-sell-all" @click="all()" />
+      <div class="menu-sell-money">
+        <image class="menu-sell-money-img" src="/common/menu/money.png" />
+        <text class="menu-sell-money-text">x{{ sellMoney }}</text>
+      </div>
+      <image src="/common/menu/qd.png" class="menu-sell-sure" @click="sure()" />
+
+      <image class="menu-close" src="/common/menu/exit.png" @click="back()" />
+    </div>
+
+    <div class="loading" if="{{ loading }}">
+      <text class="loading-text">加载中</text>
+      <text class="loading-text2">正在读取数据</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    loading: true,
+    menuItem: null,
+    itemCount: 0,
+    sellMenu: false,
+    sellMoney: 0,
+
+    dPlants: null
+  },
+
+  back() {
+    this.sellMenu = false
+  },
+
+  all() {
+    this.itemCount = this.menuItem.count
+    this.sellMoney = this.menuItem.sell * this.itemCount
+  },
+
+  sure() {
+    this.menuItem.count -= this.itemCount
+    if (this.menuItem.count <= 0) {
+      this.dPlants.splice(this.menuItem, 1)
+    }
+    this.$app.$def.money += this.sellMoney
+    console.log("sure " + this.$app.$def.money)
+    this.itemCount = 1
+    this.sellMenu = false
+    this.dPlants = this.$app.$def.plants
+    this.menuItem = null
+  },
+
+  add() {
+    if (this.itemCount < this.menuItem.count) {
+      this.itemCount++
+      this.sellMoney = this.menuItem.sell * this.itemCount
+    }
+  },
+
+  sub() {
+    if (this.itemCount > 1) {
+      this.itemCount--
+      this.sellMoney = this.menuItem.sell * this.itemCount
+    }
+  },
+
+  async onInit() {
+    this.dPlants = this.$app.$def.plants
+    this.menuItem = this.$app.$def.plants[0]
+    this.loading = false
+  },
+
+  async exit() {
+    this.$app.$def.jumpPage("main")
+  },
+
+  sel(item) {
+    this.menuItem = item
+  },
+
+  sell() {
+    if (this.menuItem != null) {
+      this.sellMenu = true
+      this.itemCount = 1
+      this.sellMoney = this.menuItem.sell * this.itemCount
+    }
+  }
+}
+</script>
+
+<style>
+@import "../base.css";
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  width: 192px;
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.loading-text2 {
+  font-size: 20px;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/common/warehouse/background.png);
+}
+
+.menu-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-top: 102px;
+  padding-left: 43px;
+  background-image: url(/common/menu/background_warehouse.png);
+  background-repeat: no-repeat;
+  background-position: 23px 41px;
+}
+
+.menu-list-scroll {
+  margin-left: -5px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.menu-close {
+  position: absolute;
+  left: 77px;
+  bottom: 4px;
+  width: 40px;
+  height: 39px;
+}
+
+.menu-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 53px;
+  width: 112px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: visible;
+}
+
+.menu-list-item-sel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: #c0774b;
+}
+
+.menu-list-item-img {
+  margin-left: 8px;
+  width: 32px;
+  height: auto;
+  line-height: 53px;
+}
+
+.menu-list-item-text1 {
+  margin-left: 6px;
+  font-size: 17px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu-list-item-text2 {
+  flex: 1;
+  font-size: 17px;
+  color: #fff;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 6px;
+  overflow: visible;
+}
+
+.menu-sell {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 102px;
+  padding-left: 43px;
+  padding-right: 42px;
+  background-image: url(/common/menu/background_warehouse.png);
+  background-repeat: no-repeat;
+  background-position: 23px 41px;
+}
+
+.menu-sell-img {
+  margin-left: 11px;
+  width: 32px;
+  height: auto;
+  line-height: 53px;
+}
+
+.menu-sell-text1 {
+  margin-left: 8px;
+  font-size: 17px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu-sell-text2 {
+  flex: 1;
+  font-size: 17px;
+  color: #fff;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 6px;
+}
+
+.menu-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 53px;
+  width: 107px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.menu-add-btn {
+  margin-top: 10px;
+  width: 48px;
+  height: 48px;
+}
+
+.menu-sub-btn {
+  margin-top: 24px;
+  width: 48px;
+  height: 18px;
+}
+
+.menu-count-text {
+  color: white;
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.menu-sell-all {
+  margin-top: 4px;
+  width: 96px;
+  height: 48px;
+}
+
+.menu-sell-sure {
+  margin-top: 4px;
+  width: 105px;
+  height: 45px;
+}
+
+.menu-list-sell {
+  position: absolute;
+  left: 45px;
+  bottom: 64px;
+}
+
+.menu-sell-money {
+  margin-top: 4px;
+  width: 70px;
+  height: 24px;
+  overflow: visible;
+}
+
+.menu-sell-money-img {
+  height: 24px;
+  width: 20px;
+}
+
+.menu-sell-money-text {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  color: white;
+  overflow: visible;
+}
+</style>

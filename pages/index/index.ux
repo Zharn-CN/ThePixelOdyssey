@@ -1,0 +1,107 @@
+<template>
+  <div class="container">
+    <image src="/common/donghua/WenZi.png" class="h-slide" />
+    <image src="/common/donghua/JiXiangWu.png" class="v-slide" />
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+export default {
+  data: {},
+
+  jump() {
+    router.push({
+      uri: "/pages/main"
+    })
+  },
+
+  onInit() {
+    this.$app.$def.initData()
+    setTimeout(() => {
+      this.jump()
+    }, 2200)
+  },
+
+  onShow() {}
+}
+</script>
+
+<style>
+/* 外层容器 */
+.container {
+  position: absolute;
+  width: 192px;
+  height: 480px;
+  left: 0px;
+  top: 0px;
+  background-color: #000;
+}
+
+/* 横向图片 */
+.h-slide {
+  position: absolute;
+  left: -140px;
+  top: 230px;
+  animation-name: HenXiang;
+  animation-duration: 1.5s;
+
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  /* left: 26px; */
+}
+
+/* 竖向图片 */
+.v-slide {
+  position: absolute;
+  left: 52.5px;
+  top: -102px;
+  animation-name: ShuXiang;
+  animation-duration: 2s;
+
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  /* top: 123px; */
+}
+
+/* 横向图片动画：先平移 1s 到位，再在接下来的 0.5s 内完成淡出 */
+/* @keyframes HenXiang {
+  0% {
+    left: -140px;
+    opacity: 1;
+  }
+
+  66.67% {
+    left: 26px;
+    opacity: 1;
+  }
+
+  100% {
+    left: 26px;
+    opacity: 0;
+  }
+} */
+
+/* 竖向图片动画：前 1s 平移到位，后续 1s内执行放大再缩小效果 */
+/* @keyframes ShuXiang {
+  0% {
+    transform: scale(1);
+    top: -102px;
+  }
+
+  50% {
+    transform: scale(1);
+    top: 123px;
+  }
+
+  75% {
+    transform: scale(1.2);
+    top: 123px;
+  }
+
+  100% {
+    transform: scale(1);
+    top: 123px;
+  }
+} */
+</style>

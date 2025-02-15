@@ -1,0 +1,72 @@
+{
+  "package": "top.zharn.thepixelodyssey",
+  "name": "像素奥德赛",
+  "versionName": "0.1.4",
+  "versionCode": 202502150140,
+  "minPlatformVersion": 1000,
+  "icon": "/common/logo.png",
+  "deviceTypeList": [
+    "watch"
+  ],
+  "permissions": [
+    {
+      "name": "hapjs.permission.DEVICE_INFO"
+    }
+  ],
+  "features": [
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.device"
+    },
+    {
+      "name": "system.cipher"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.file"
+    },
+    {
+      "name": "system.vibrator"
+    }
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": 192
+  },
+  "router": {
+    "entry": "pages/index",
+    "pages": {
+      "pages/index": {
+        "component": "index"
+      },
+      "pages/loading": {
+        "component": "loading"
+      },
+      "pages/main": {
+        "component": "main"
+      },
+      "pages/garden": {
+        "component": "garden"
+      },
+      "pages/warehouse": {
+        "component": "warehouse"
+      },
+      "pages/setting": {
+        "component": "setting"
+      },
+      "pages/about": {
+        "component": "about"
+      }
+    }
+  }
+}

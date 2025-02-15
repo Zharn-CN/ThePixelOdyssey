@@ -1,0 +1,53 @@
+<template>
+  <div class="bg" @swipe="">
+    <image src="/common/setting/back.png" class="back" @click="onButtonPressed(-1)" />
+
+    <text class="text">{{ version }}</text>
+  </div>
+</template>
+
+<script>
+import app from "@system.app"
+export default {
+  data: {
+    version: "null"
+  },
+
+  onButtonPressed(index) {
+    if (index == -1) {
+      this.$app.$def.jumpPage("setting")
+    }
+  },
+
+  onInit() {
+    this.version = app.getInfo().versionName
+  }
+}
+</script>
+
+<style>
+@import "../base.css";
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  background-image: url(/common/setting/about/page.png);
+}
+
+.back {
+  width: 102px;
+  height: 72px;
+  margin-top: 6px;
+}
+
+.text {
+  position: absolute;
+  top: 159px;
+  left: 22px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 32px;
+}
+</style>

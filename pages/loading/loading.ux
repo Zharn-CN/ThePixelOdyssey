@@ -1,0 +1,40 @@
+<template>
+  <div class="bg" @swipe="">
+    <text class="loading-text">加载中</text>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+
+export default {
+  data: {
+    page: null
+  },
+  onInit() {
+    this.jump()
+  },
+  jump() {
+    router.push({
+      uri: "/pages/" + this.page
+    })
+  }
+}
+</script>
+
+<style>
+@import "../base.css";
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.loading-text {
+  font-size: 36px;
+  color: #fff;
+}
+</style>

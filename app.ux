@@ -1,0 +1,212 @@
+<script>
+import router from "@system.router"
+import file from "@system.file"
+const DEFAULT_FIELDS = [
+  {id: 0, field: "", buy: true, water: false, arable: false, plant: null},
+  {id: 1, field: "", buy: true, water: false, arable: false, plant: null},
+  {id: 2, field: "", buy: false, water: false, arable: false, plant: null},
+  {id: 3, field: "", buy: false, water: false, arable: false, plant: null},
+  {id: 4, field: "", buy: true, water: false, arable: false, plant: null},
+  {id: 5, field: "", buy: false, water: false, arable: false, plant: null},
+  {id: 6, field: "", buy: false, water: false, arable: false, plant: null},
+  {id: 7, field: "", buy: false, water: false, arable: false, plant: null}
+]
+export default {
+  data: {
+    plants: null,
+    fields: null,
+    PLANTS_DATA_INDEX: {
+      浆果: 0,
+      胡萝卜: 1,
+      向日葵: 2,
+      水稻: 3,
+      丝瓜: 4,
+      南瓜: 5,
+      玉米: 6,
+      白萝卜: 7
+    },
+    PLANTS_DATA: [
+      {
+        name: "浆果",
+        key: "jiangGuo",
+        sell: 40,
+        buy: 20,
+        maxState: 3,
+        period: 10000
+      },
+      {
+        name: "胡萝卜",
+        key: "huLuoBo",
+        sell: 130,
+        buy: 80,
+        maxState: 3,
+        period: 60000
+      },
+      {
+        name: "向日葵",
+        key: "xiangRiKui",
+        sell: 200,
+        buy: 120,
+        maxState: 2,
+        period: 330000
+      },
+      {
+        name: "水稻",
+        key: "shuiDao",
+        sell: 320,
+        buy: 200,
+        maxState: 3,
+        period: 600000
+      },
+      {
+        name: "丝瓜",
+        key: "siGua",
+        sell: 43,
+        buy: 250,
+        maxState: 3,
+        period: 120000
+      },
+      {
+        name: "玉米",
+        key: "yvMi",
+        sell: 640,
+        buy: 400,
+        maxState: 4,
+        period: 2700000
+      },
+      {
+        name: "南瓜",
+        key: "lanGua",
+        sell: 800,
+        buy: 500,
+        maxState: 4,
+        period: 3600000
+      },
+      {
+        name: "白萝卜",
+        key: "baiLuoBo",
+        sell: 1100,
+        buy: 600,
+        maxState: 3,
+        period: 10800000
+      }
+    ]
+  },
+  onCreate() {
+    console.log("app created")
+  },
+  onDestroy() {
+    console.log("app destroyed")
+  },
+
+  copyJson(data) {
+    return JSON.parse(JSON.stringify(data))
+  },
+
+  async reset() {
+    this.fields = this.copyJson(DEFAULT_FIELDS)
+    this.plants = []
+    this.money = 1000
+    await this.saveData()
+    this.jumpPage("main")
+  },
+
+  async saveData() {
+    await this.saveFile("fields", JSON.stringify(this.fields))
+    await this.saveFile("plants", JSON.stringify(this.plants))
+    await this.saveFile("money", "" + this.money)
+  },
+
+  initData() {
+    return new Promise(async (resolve, reject) => {
+      this.fields = JSON.parse(await this.initFile("fields", JSON.stringify(DEFAULT_FIELDS)))
+      this.plants = JSON.parse(await this.initFile("plants", JSON.stringify([])))
+      this.money = +(await this.initFile("money", "1000"))
+      console.log("initData结束")
+      console.log(this.fields)
+      console.log(typeof this.fields)
+      resolve()
+    })
+  },
+  // ,
+  //     params: {
+  //       page: page
+  //     }
+  jumpPage(page) {
+    router.push({
+      uri: `/pages/${page}`
+    })
+  },
+  initFile(name, defaultData) {
+    defaultData = defaultData + ""
+    return new Promise(async (resolve, reject) => {
+      try {
+        const exist = await this.isFile(name)
+        if (exist) {
+          const data = await this.loadFile(name)
+          resolve(data)
+        } else if (defaultData) {
+          await this.saveFile(name, defaultData)
+          resolve(defaultData)
+        }
+      } catch (error) {
+        // 处理错误，例如抛出异常或返回默认值
+        console.error("初始化文件时发生错误:", error)
+        throw error
+      }
+    })
+  },
+  isFile(name) {
+    return new Promise((resolve, reject) => {
+      file.access({
+        uri: `internal://files/thePixelOdyssey/${name}.json`,
+        success: (data) => {
+          resolve(true)
+          console.log(`${name}存在`)
+        },
+        fail: (data, code) => {
+          resolve(false)
+          console.log(`${name}不存在`)
+        }
+      })
+    })
+  },
+  loadFile(name) {
+    return new Promise((resolve, reject) => {
+      file.readText({
+        uri: `internal://files/thePixelOdyssey/${name}.json`,
+        success: (data) => {
+          resolve(data.text)
+          console.log(`加载${name}成功`)
+          console.log(data.text)
+        },
+        fail: (data, code) => {
+          reject(code)
+          console.log(`加载${name}失败`)
+          console.log(data)
+          console.log(code)
+        }
+      })
+    })
+  },
+  saveFile(name, text) {
+    return new Promise((resolve, reject) => {
+      file.writeText({
+        uri: `internal://files/thePixelOdyssey/${name}.json`,
+        text: text,
+        success: (data) => {
+          resolve(data)
+          console.log(`保存${name}成功`)
+          console.log(data)
+        },
+        fail: (data, code) => {
+          reject(code)
+          console.log(`保存${name}失败`)
+          console.log(data)
+          console.log(code)
+        }
+      })
+    })
+  }
+}
+</script>
