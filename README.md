@@ -12,3 +12,5 @@
 ## 四：快捷跳转
 1 像素奥德赛策划案：https://pcnplz42dhz7.feishu.cn/wiki/PGgpwesajiU3X3kFsI1cY04dnYb  
 2 像素奥德赛代办：https://pcnplz42dhz7.feishu.cn/wiki/Lpmzw4SFMifTTck9dy7cdSfinbf
+## 五：禁止做的事
+1 不要把这个仓库搞毁了，一定要真正学习git！
