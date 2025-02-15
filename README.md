@@ -10,5 +10,5 @@
 1 建议学习markdown语法，每一次版本更新都需要说明  
 2 建议学习git，方便我们的工作流程
 ## 四：快捷跳转
-1 像素奥德赛策划案：https://pcnplz42dhz7.feishu.cn/wiki/PGgpwesajiU3X3kFsI1cY04dnYb
+1 像素奥德赛策划案：https://pcnplz42dhz7.feishu.cn/wiki/PGgpwesajiU3X3kFsI1cY04dnYb  
 2 像素奥德赛代办：https://pcnplz42dhz7.feishu.cn/wiki/Lpmzw4SFMifTTck9dy7cdSfinbf
