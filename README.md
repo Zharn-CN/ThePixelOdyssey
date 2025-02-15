@@ -4,10 +4,10 @@
 1 核对了作物出售价格与时间（%1）  
 2 替换了上层背景，取消了装饰图层（%2）
 ## 二：怎么使用？
-上一个版本的源码请在OldVersion分支下载  
-而最新版请在main分支下载  
-新版更新好后，请把代码上传到main分支  
-代码备份放在OldVersion分支
+上一个版本的源码请在*OldVersion*分支下载  
+而最新版请在*main*分支下载  
+*新版更新好后，请把代码上传到main分支*   
+*代码备份放在OldVersion分支*
 ## 三：有什么建议？
 1 建议学习markdown语法，每一次版本更新都需要说明  
 2 建议学习git，方便我们的工作流程
@@ -15,4 +15,4 @@
 1 像素奥德赛策划案：https://pcnplz42dhz7.feishu.cn/wiki/PGgpwesajiU3X3kFsI1cY04dnYb  
 2 像素奥德赛代办：https://pcnplz42dhz7.feishu.cn/wiki/Lpmzw4SFMifTTck9dy7cdSfinbf
 ## 五：禁止做的事
-1 不要把这个仓库搞毁了，一定要真正学习git！
+*1 不要把这个仓库搞毁了，一定要好好学习git!*
