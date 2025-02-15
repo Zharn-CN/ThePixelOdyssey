@@ -14,15 +14,6 @@
   background-repeat: no-repeat;
 }
 
-.trims {
-  position: absolute;
-  pointer-events: none;
-  width: 768px;
-  height: 473px;
-  left: 0;
-  top: 0;
-}
-
 .loading {
   position: absolute;
   top: 0;
