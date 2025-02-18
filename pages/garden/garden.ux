@@ -92,7 +92,7 @@ export default {
       item: null,
       stateText: "null",
 
-      nextStateText: "反正没好",
+      nextStateText: "没好反正",
       seed: null
     },
 
