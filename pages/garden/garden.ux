@@ -206,7 +206,6 @@ export default {
         this.menu.item.field = "field-arable"
       }
     } else if (index == STATE_SEED) {
-      if ()
       if (this.$app.$def.money >= this.menu.seed.buy) {
         this.$app.$def.money -= this.menu.seed.buy
         this.menu.stateText = "生长中"
@@ -244,7 +243,7 @@ export default {
       if (tempBool == false) {
         this.$app.$def.plants.push({
           name: this.menu.item.plant.name,
-          key: this.menu.item.plant.key,if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)
+          key: this.menu.item.plant.key,
           maxState: this.menu.item.plant.maxState,
           count: 1,
           sell: this.menu.item.plant.sell
