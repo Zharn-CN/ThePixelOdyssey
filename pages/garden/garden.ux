@@ -170,6 +170,7 @@ export default {
       this.menu.stateText = "待耕地"
     } else if (item.plant == null) {
       this.menu.stateText = "待播种"
+    
       this.menu.seed = this.$app.$def.data.PLANTS_DATA[0]
     } else if (item.plant.maxState == item.plant.state) {
       this.menu.stateText = "待收集"
@@ -205,9 +206,9 @@ export default {
         this.menu.item.field = "field-arable"
       }
     } else if (index == STATE_SEED) {
+      if ()
       if (this.$app.$def.money >= this.menu.seed.buy) {
         this.$app.$def.money -= this.menu.seed.buy
-
         this.menu.stateText = "生长中"
         this.menu.item.plant = {
           name: this.menu.seed.name,
@@ -221,6 +222,16 @@ export default {
         this.menu.seed.count--
         this.menu.open = false
       }
+      else {  //如果金额不够则进行提示
+        vibrator.vibrate({
+          mode: 'long'
+        })
+        prompt.showToast({
+          message: '钱不够了',
+          duration: 2000
+        })
+
+      }
     } else if (index == STATE_COLLECT) {
       let tempBool = false
       for (let i = 0; i < this.$app.$def.plants.length; i++) {
@@ -233,7 +244,7 @@ export default {
       if (tempBool == false) {
         this.$app.$def.plants.push({
           name: this.menu.item.plant.name,
-          key: this.menu.item.plant.key,
+          key: this.menu.item.plant.key,if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)if (this.$app.$def.money >= this.menu.seed.buy)
           maxState: this.menu.item.plant.maxState,
           count: 1,
           sell: this.menu.item.plant.sell
@@ -257,7 +268,7 @@ export default {
     } else if (!item.arable) {
       this.menu.stateText = "待耕地"
     } else if (item.plant == null) {
-      this.menu.stateText = "待播种"
+      this.menu.stateText = "待播种"    
       this.menu.seed = this.$app.$def.plants[0]
     } else if (item.plant.maxState == item.plant.state) {
       this.menu.stateText = "待收集"

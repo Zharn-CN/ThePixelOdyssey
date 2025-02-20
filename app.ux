@@ -1,6 +1,7 @@
 <script>
 import router from "@system.router"
 import file from "@system.file"
+import prompt from "@system.prompt"
 const DEFAULT_FIELDS = [
   {id: 0, field: "", buy: true, water: false, arable: false, plant: null},
   {id: 1, field: "", buy: true, water: false, arable: false, plant: null},
@@ -58,6 +59,7 @@ export default {
         maxState: 3,
         period: 600000
       },
+// 修改了丝瓜的出售价格，原来为43      
       {
         name: "丝瓜",
         key: "siGua",
@@ -66,12 +68,13 @@ export default {
         maxState: 3,
         period: 120000
       },
+// 删除了玉米4贴图，并将玉米的maxstate改为3
       {
         name: "玉米",
         key: "yvMi",
         sell: 640,
         buy: 400,
-        maxState: 4,
+        maxState: 3,
         period: 2700000
       },
       {
