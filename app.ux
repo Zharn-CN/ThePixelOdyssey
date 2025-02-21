@@ -16,16 +16,6 @@ export default {
   data: {
     plants: null,
     fields: null,
-    PLANTS_DATA_INDEX: {
-      浆果: 0,
-      胡萝卜: 1,
-      向日葵: 2,
-      水稻: 3,
-      丝瓜: 4,
-      南瓜: 5,
-      玉米: 6,
-      白萝卜: 7
-    },
     PLANTS_DATA: [
       {
         name: "浆果",
@@ -59,7 +49,7 @@ export default {
         maxState: 3,
         period: 600000
       },
-// 修改了丝瓜的出售价格，原来为43      
+      // 修改了丝瓜的出售价格，原来为43
       {
         name: "丝瓜",
         key: "siGua",
@@ -68,14 +58,15 @@ export default {
         maxState: 3,
         period: 120000
       },
-// 删除了玉米4贴图，并将玉米的maxstate改为3
+      // 删除了玉米4贴图，并将玉米的maxstate改为3
       {
         name: "玉米",
         key: "yvMi",
         sell: 640,
-        buy: 400,
+        buy: 10,
         maxState: 3,
-        period: 2700000
+        // period: 2700000
+        period: 1000
       },
       {
         name: "南瓜",
