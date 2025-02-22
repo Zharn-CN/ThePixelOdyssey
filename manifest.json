@@ -1,8 +1,8 @@
 {
   "package": "top.zharn.thepixelodyssey",
   "name": "像素奥德赛",
-  "versionName": "0.1.4.1",
-  "versionCode": 202502210141,
+  "versionName": "0.1.4.2",
+  "versionCode": 202502220142,
   "minPlatformVersion": 1000,
   "icon": "/common/logo.png",
   "deviceTypeList": [

@@ -232,7 +232,7 @@ export default {
           })
           prompt.showToast({
             message: "钱不够了",
-            duration: 2000
+            duration: 500
           })
         }
       }
