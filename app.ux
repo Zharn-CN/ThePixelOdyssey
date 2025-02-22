@@ -63,10 +63,9 @@ export default {
         name: "玉米",
         key: "yvMi",
         sell: 640,
-        buy: 10,
+        buy: 400,
         maxState: 3,
-        // period: 2700000
-        period: 1000
+        period: 2700000
       },
       {
         name: "南瓜",
